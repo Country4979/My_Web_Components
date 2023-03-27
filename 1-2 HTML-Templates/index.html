@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates</title>
+</head>
+<body>
+    <template>
+        <h1>Hola keepcoding!</h1>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/739px-Firefox_logo%2C_2019.svg.png"
+          alt="example-alt"
+        />
+      </template>
+
+      <lazy-image image="https://pbs.twimg.com/profile_images/1360169463455379459/v7xAQtTB.jpg"></lazy-image>
+</body>
+
+<script>
+    //1.- Definir la clase (mismo nombre que el component)
+    //2.- Using a document selector method, target the template DOM node
+    //3.- Create a clone of that DOM node, and set the propperties tha you need. (https://pbs.twimg.com/profile_images/1360169463455379459/v7xAQtTB.jpg)
+    //4.- Append the clone to LazyImage component
+    //5.- Use the lazyImage component
+
+    class LazyImage extends HTMLElement {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {   //Sólo se ejecuta una vez
+            const template = document.querySelector('template');
+
+            const templateCone = template.content.cloneNode(true); //Hago una copia del template
+
+            const imageUrl = this.getAttribute('image') || 'https://www.google.com/url?sa=i&url=https%3A%2F%2Festadisticas.sieca.int%2Fdocumentos%2Fdetalle%2F1200&psig=AOvVaw3Or6p4YvZPZrrXhg7bio3H&ust=1680034473592000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLjH8qH2_P0CFQAAAAAdAAAAABAE'; //Obtengo la url de mi mismo
+
+            /*const imgElement = templateCone.querySelector('img');
+            imgElement.src = imageUrl*/
+            
+            templateCone.querySelector('img').src = imageUrl; //Aplico la url al src de la copia del template
+
+            this.appendChild(templateCone)
+        }
+        static get observedAttributes() {
+                return ['image']
+            }
+            attributeChangedCallback(attributeName, oldValue, newValue) {
+                if (oldValue !== null){
+                    this.querySelector('img').src = newValue
+                }
+            }
+    }
+
+    window.customElements.define('lazy-image', LazyImage);
+</script>
+</html>
