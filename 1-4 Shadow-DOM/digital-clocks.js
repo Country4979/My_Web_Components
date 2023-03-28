@@ -3,6 +3,13 @@
   2- Each second, we must calculate the time and update the component HTML
 */
 
+//Creamos la etiqueta template en html
+const templateElement = document.createElement('template')
+templateElement.innerHTML = `
+  <h1></h1>  
+  <p></p>
+`;
+
 class DigitalClock extends HTMLElement {
 
     constructor() {
@@ -11,17 +18,30 @@ class DigitalClock extends HTMLElement {
     }
   
     connectedCallback() {
+      //clonamos el clon del template
+      const templateClone = templateElement.content.cloneNode(true);
+
+      //Rellenamos la copia con los datos que queremos
+      const currentTime = this.calculateCurrentTime();
+      templateClone.querySelector('h1').textContent = 'Reloj Digital';
+      templateClone.querySelector('p').textContent = currentTime;
+      //this.appendChild(templateClone)
+      this.shadowRoot.appendChild(templateClone)
+      
       setInterval(() => {
-        // obtener la hora y pintarla en el DOM
-        const now = new Date();
-        const hours = now.getHours();
-        const minutes = now.getMinutes();
-        const seconds = now.getSeconds();
-  
-        this.innerHTML = `${hours} : ${minutes} : ${seconds}`;
+        const currentTime = this.calculateCurrentTime();
+        this.shadowRoot.querySelector('p').textContent = currentTime //No podemos aplicar el innerHTML porque machacamos todo lo que hay dentro de la etiqueta              
       }, 1000);
     }
-  
+    
+    calculateCurrentTime() {
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+     
+      return `${hours} : ${minutes} : ${seconds}`
+    }
   }
   
   window.customElements.define("digital-clock", DigitalClock);
