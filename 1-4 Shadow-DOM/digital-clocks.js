@@ -6,7 +6,17 @@
 //Creamos la etiqueta template en html
 const templateElement = document.createElement('template')
 templateElement.innerHTML = `
-  <h1></h1>  
+  
+<style>
+h1 {
+  color: var(--digital-clock-title-color, lightblue)
+}
+p{
+  color: var(--digital-clock-time-color, lightred)
+}
+</style>
+
+<h1></h1>  
   <p></p>
 `;
 
@@ -23,7 +33,7 @@ class DigitalClock extends HTMLElement {
 
       //Rellenamos la copia con los datos que queremos
       const currentTime = this.calculateCurrentTime();
-      templateClone.querySelector('h1').textContent = 'Reloj Digital';
+      templateClone.querySelector('h1').textContent = 'Reloj Digital con Shadow DOM';
       templateClone.querySelector('p').textContent = currentTime;
       //this.appendChild(templateClone)
       this.shadowRoot.appendChild(templateClone)

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input-field></input-field>
+    <input-field id="cristian" buttonLabel="Añadir a la lista" placeholder="Escribe lo que tengas que hacer"></input-field> <!--Componente reutilizado con otro valor de atributo-->
+
+    <list-item></list-item>
+    <list-item value="Aprender mucho Js"></list-item>
+    <list-item value="Ir a comparar" buttonLabel="❌"></list-item>
+
+</body>
+
+<!--Comprobamos que el primer componente funciona-->
+<script>
+    document.querySelector('#cristian').addEventListener('submit', (event) => {
+    
+    alert(`Evento recibido " ${event.detail} "`);
+});
+</script>
+
+<script src="./input-field.js"></script>
+<script src="./list-item.js"></script>
+
+</html>
