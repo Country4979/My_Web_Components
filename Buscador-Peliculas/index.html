@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Film Browser</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+  <style>
+    :root {
+      --progress-bar-foreground-color: red;
+      --progress-bar-height: 10px;
+    }
+  </style>
 <body>
-    
+  <films-manager></films-manager>
+  <!-- Es prueba
+    <film-item name="Jurassic Park" rating="95"></film-item>
+    -->
+  <!-- Es prueba
+    <progress-bar value="75"></progress-bar>
+  -->
+  
+  <script type="module" src="./films-manager.js"></script>
+  <!-- <script type="module" src="./film-item.js"></script> -->
+  <!--<script src="./progress-bar.js"></script>-->
 </body>
-<script src="films-manager.js" type="module"></script>
 </html>
