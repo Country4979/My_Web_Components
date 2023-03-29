@@ -7,24 +7,29 @@
     <title>Document</title>
 </head>
 <body>
+
+    <list-items-manager></list-items-manager>
+ 
+<!-- Esto lo pinta el list-item-manager
     <input-field></input-field>
-    <input-field id="cristian" buttonLabel="Añadir a la lista" placeholder="Escribe lo que tengas que hacer"></input-field> <!--Componente reutilizado con otro valor de atributo-->
+    <input-field id="cristian" buttonLabel="Añadir a la lista" placeholder="Escribe lo que tengas que hacer"></input-field> //Componente reutilizado con otro valor de atributo
 
     <list-item></list-item>
     <list-item value="Aprender mucho Js"></list-item>
     <list-item value="Ir a comparar" buttonLabel="❌"></list-item>
-
+-->
 </body>
 
-<!--Comprobamos que el primer componente funciona-->
+<!--Comprobamos que el primer componente funciona
 <script>
     document.querySelector('#cristian').addEventListener('submit', (event) => {
     
     alert(`Evento recibido " ${event.detail} "`);
 });
-</script>
+</script>-->
 
-<script src="./input-field.js"></script>
-<script src="./list-item.js"></script>
+<!--<script src="./input-field.js"></script>
+<script src="./list-item.js"></script>-->
+<script src="./list-item-manager.js" type="module"></script>
 
 </html>
